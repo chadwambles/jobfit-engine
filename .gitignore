@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+
+# Raw scraped posting text never gets committed. Point JOBFIT_CORPUS at a
+# file outside the repo instead. Derived counts live in data/expected-201.json,
+# which is numbers rather than content.
+corpus/
+*.corpus.txt
+postings*.txt
+ThePublicJiraDataset*
+!fixtures/synthetic/*.txt

@@ -1,0 +1,49 @@
+{
+ "version": "1.0.0",
+ "domains": [
+  {
+   "name": "Healthcare / payer",
+   "pattern": "\\b(healthcare|health plan|payer|medicaid|medicare|clinical|patient|HIPAA|pharmacy|provider network)\\b"
+  },
+  {
+   "name": "Insurance",
+   "pattern": "\\b(insurance|underwriting|claims|annuit|policyholder|actuarial)\\b"
+  },
+  {
+   "name": "Government / public",
+   "pattern": "\\b(federal|government|public sector|GovCon|municipal|state agency|FedRAMP)\\b"
+  },
+  {
+   "name": "Banking / fintech",
+   "pattern": "\\b(bank|fintech|lending|mortgage|payments|capital markets|trading)\\b"
+  },
+  {
+   "name": "Manufacturing / supply chain",
+   "pattern": "\\b(manufactur|supply chain|warehouse|WMS|procure.to.pay|inventory|logistics)\\b"
+  },
+  {
+   "name": "Retail / ecommerce",
+   "pattern": "\\b(retail|ecommerce|e-commerce|merchandis|omnichannel)\\b"
+  },
+  {
+   "name": "SaaS / tech product",
+   "pattern": "\\b(SaaS|B2B software|product-led|ARR|subscription)\\b"
+  },
+  {
+   "name": "Life sciences",
+   "pattern": "\\b(life science|biotech|pharmaceutic|laboratory|LIMS|GxP)\\b"
+  },
+  {
+   "name": "Education",
+   "pattern": "\\b(university|higher education|student information|K-12)\\b"
+  },
+  {
+   "name": "Energy / utilities",
+   "pattern": "\\b(utilit|energy|oil and gas|renewable)\\b"
+  },
+  {
+   "name": "Regulated environment",
+   "pattern": "\\bHIPAA\\b|\\bGxP\\b|\\bSOX\\b|\\bFedRAMP\\b|regulated (?:environment|data|industry)|compliance requirement|audit trail|\\bPHI\\b|\\bPII\\b"
+  }
+ ]
+}

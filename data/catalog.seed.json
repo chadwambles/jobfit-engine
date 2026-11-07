@@ -1,0 +1,86 @@
+{
+  "version": "0.1.0",
+  "note": "Seed catalog. Eight entries drawn from Chad's published projects and backlog, enough to prove the matcher works. The real catalog is Phase D and is hand-written, because the model dresses matched projects rather than inventing them.",
+  "projects": [
+    {
+      "id": "proj_pricing",
+      "title": "Price fifteen vendors in one software category and find the real decision rule",
+      "capabilities": ["Build a business case", "Clean and prepare messy data", "Design data visualizations", "Define data dictionaries and definitions", "Produce project documentation and decision logs"],
+      "tools": ["Excel"],
+      "artifact": "A workbook with a live cost model, plus a written analysis",
+      "effort": "2 to 3 weeks",
+      "dataSource": "Vendor pricing pages, collected by hand with a date on every row",
+      "reachable": true
+    },
+    {
+      "id": "proj_traceability",
+      "title": "Take one real feature from stakeholder request to tested requirement",
+      "capabilities": ["Maintain requirements traceability", "Write user stories", "Write acceptance criteria", "Document business rules", "Elicit requirements from stakeholders"],
+      "tools": ["Jira", "Confluence"],
+      "artifact": "A traceability matrix, a story set with acceptance criteria, and a UAT plan",
+      "effort": "1 to 2 weeks",
+      "dataSource": "None needed. Use an open source project's real issue tracker as the stakeholder.",
+      "reachable": true
+    },
+    {
+      "id": "proj_process",
+      "title": "Map a broken process end to end and cost the fix",
+      "capabilities": ["Map processes and build flow diagrams", "Model current state, future state and the gap", "Identify and deliver process improvements", "Elicit requirements from stakeholders", "Build a business case"],
+      "tools": ["Visio"],
+      "artifact": "Current and future state flows, a gap register, and a costed recommendation",
+      "effort": "1 to 2 weeks",
+      "dataSource": "A process you can observe directly, at work or in a volunteer organization",
+      "reachable": true
+    },
+    {
+      "id": "proj_uat",
+      "title": "Run a full UAT cycle against someone else's software and report it",
+      "capabilities": ["Plan and coordinate UAT", "Design test cases and scripts", "Track and triage defects", "Write acceptance criteria"],
+      "tools": ["Jira"],
+      "artifact": "A UAT plan, executed test cases, and a defect report with triage decisions",
+      "effort": "1 week",
+      "dataSource": "Any open source application with a public issue tracker",
+      "reachable": true
+    },
+    {
+      "id": "proj_dashboard",
+      "title": "Build an operational dashboard on a live public data feed",
+      "capabilities": ["Build dashboards", "Define KPIs and metrics", "Build and maintain recurring reports", "Clean and prepare messy data", "Validate data quality"],
+      "tools": ["Power BI", "SQL"],
+      "artifact": "A published interactive dashboard that refreshes",
+      "effort": "2 weeks",
+      "dataSource": "A public API with a history worth watching",
+      "reachable": true
+    },
+    {
+      "id": "proj_sql_audit",
+      "title": "Audit a published dataset and document every defect you find",
+      "capabilities": ["Query data with SQL", "Validate data quality", "Clean and prepare messy data", "Define data dictionaries and definitions", "Produce project documentation and decision logs"],
+      "tools": ["SQL", "Python"],
+      "artifact": "A data quality report, a data dictionary, and the cleaning code",
+      "effort": "1 week",
+      "dataSource": "Any government or Kaggle dataset with known problems",
+      "reachable": true
+    },
+    {
+      "id": "proj_cohort",
+      "title": "Measure whether a change actually changed anything",
+      "capabilities": ["Apply statistical analysis", "Analyze cohorts and segments", "Measure experiments and A/B tests", "Design data visualizations"],
+      "tools": ["Python", "SQL"],
+      "artifact": "A written analysis with the comparison group stated up front",
+      "effort": "2 weeks",
+      "dataSource": "A public before-and-after event with data either side",
+      "reachable": true
+    },
+    {
+      "id": "proj_forecast",
+      "title": "Forecast something that matters and publish your error afterwards",
+      "capabilities": ["Build forecasts", "Apply statistical analysis", "Run ad hoc analysis to answer business questions", "Design data visualizations"],
+      "tools": ["Python"],
+      "artifact": "A forecast, the method, and a follow-up post scoring it against what happened",
+      "effort": "2 to 3 weeks",
+      "dataSource": "A public time series that keeps updating",
+      "reachable": true
+    }
+  ]
+}

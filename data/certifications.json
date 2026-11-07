@@ -1,0 +1,69 @@
+{
+ "version": "1.0.0",
+ "certifications": [
+  {
+   "name": "CBAP",
+   "pattern": "\\bCBAP\\b"
+  },
+  {
+   "name": "CCBA",
+   "pattern": "\\bCCBA\\b"
+  },
+  {
+   "name": "ECBA",
+   "pattern": "\\bECBA\\b"
+  },
+  {
+   "name": "PMI-PBA",
+   "pattern": "\\bPMI[- ]?PBA\\b"
+  },
+  {
+   "name": "PMP",
+   "pattern": "\\bPMP\\b"
+  },
+  {
+   "name": "CAPM",
+   "pattern": "\\bCAPM\\b"
+  },
+  {
+   "name": "PMI-ACP",
+   "pattern": "\\bPMI[- ]?ACP\\b"
+  },
+  {
+   "name": "CSPO",
+   "pattern": "\\bCSPO\\b"
+  },
+  {
+   "name": "CSM",
+   "pattern": "\\bCSM\\b"
+  },
+  {
+   "name": "PSPO",
+   "pattern": "\\bPSPO\\b"
+  },
+  {
+   "name": "PSM",
+   "pattern": "\\bPSM\\b"
+  },
+  {
+   "name": "SAFe",
+   "pattern": "\\bSAFe\\b"
+  },
+  {
+   "name": "Six Sigma",
+   "pattern": "\\b(?:lean )?six sigma\\b"
+  },
+  {
+   "name": "APICS",
+   "pattern": "\\bAPICS\\b"
+  },
+  {
+   "name": "CISA",
+   "pattern": "\\bCISA\\b"
+  },
+  {
+   "name": "ITIL",
+   "pattern": "\\bITIL\\b"
+  }
+ ]
+}

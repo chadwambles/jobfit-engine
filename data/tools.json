@@ -1,0 +1,93 @@
+{
+ "version": "1.0.0",
+ "tools": [
+  {
+   "name": "SQL",
+   "pattern": "\\bSQL\\b"
+  },
+  {
+   "name": "Excel",
+   "pattern": "\\bexcel\\b"
+  },
+  {
+   "name": "Tableau",
+   "pattern": "\\btableau\\b"
+  },
+  {
+   "name": "Power BI",
+   "pattern": "\\bpower\\s?bi\\b"
+  },
+  {
+   "name": "Python",
+   "pattern": "\\bpython\\b"
+  },
+  {
+   "name": "Jira",
+   "pattern": "\\bjira\\b"
+  },
+  {
+   "name": "Confluence",
+   "pattern": "\\bconfluence\\b"
+  },
+  {
+   "name": "Visio",
+   "pattern": "\\bvisio\\b"
+  },
+  {
+   "name": "Salesforce",
+   "pattern": "\\bsalesforce\\b"
+  },
+  {
+   "name": "SAP",
+   "pattern": "\\bSAP\\b"
+  },
+  {
+   "name": "Oracle",
+   "pattern": "\\boracle\\b"
+  },
+  {
+   "name": "Snowflake",
+   "pattern": "\\bsnowflake\\b"
+  },
+  {
+   "name": "Databricks",
+   "pattern": "\\bdatabricks\\b"
+  },
+  {
+   "name": "Looker",
+   "pattern": "\\blooker\\b"
+  },
+  {
+   "name": "Alteryx",
+   "pattern": "\\balteryx\\b"
+  },
+  {
+   "name": "SharePoint",
+   "pattern": "\\bsharepoint\\b"
+  },
+  {
+   "name": "ServiceNow",
+   "pattern": "\\bservicenow\\b"
+  },
+  {
+   "name": "Workday",
+   "pattern": "\\bworkday\\b"
+  },
+  {
+   "name": "Azure",
+   "pattern": "\\bazure\\b"
+  },
+  {
+   "name": "AWS",
+   "pattern": "\\bAWS\\b"
+  },
+  {
+   "name": "Agile/Scrum",
+   "pattern": "\\bagile\\b|\\bscrum\\b"
+  },
+  {
+   "name": "SDLC",
+   "pattern": "\\bSDLC\\b"
+  }
+ ]
+}

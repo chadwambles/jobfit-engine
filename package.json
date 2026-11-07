@@ -1,0 +1,14 @@
+{
+  "name": "jobfit-engine",
+  "version": "0.1.0",
+  "description": "Turns a dump of job postings into a capability profile, a gap against what you can evidence, and ranked portfolio project matches. No model calls anywhere.",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": { "jobfit": "./cli.js" },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "validate": "node test/cross-validate.js"
+  },
+  "license": "MIT",
+  "engines": { "node": ">=20" }
+}
