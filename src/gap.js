@@ -28,7 +28,23 @@ export function computeGap(profile, evidenced = [], opts = {}) {
     missing,
     /** Share of weighted demand the person already evidences, 0 to 100. */
     coverage: demandTotal ? Math.round((1000 * coveredWeight) / demandTotal) / 10 : 0,
-    /** The gaps worth acting on, biggest demand first. */
-    priorities: missing.slice(0, 10),
+    /**
+     * Gaps a portfolio project can honestly close. These are what the matcher
+     * scores against.
+     */
+    closableSolo: missing.filter((c) => c.demonstrable === "solo"),
+    /**
+     * Gaps that need other people but not a job: open source maintainers, a
+     * volunteer organization, user interviews. Reachable, but not by sitting
+     * at a desk alone.
+     */
+    closableByOutreach: missing.filter((c) => c.demonstrable === "outreach"),
+    /**
+     * Gaps no portfolio project can evidence. Recommending a project for these
+     * would be dishonest, so the tool names them and says so.
+     */
+    needsEmployment: missing.filter((c) => c.demonstrable === "employment"),
+    /** The gaps worth acting on, biggest demand first, projects only. */
+    priorities: missing.filter((c) => c.demonstrable === "solo").slice(0, 10),
   };
 }

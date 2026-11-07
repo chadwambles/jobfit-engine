@@ -14,7 +14,10 @@
  */
 export function matchProjects(gap, catalog, opts = {}) {
   const { limit = 3, requireReachable = true } = opts;
-  const weight = new Map(gap.missing.map((c) => [c.name, c.pct]));
+  // Only solo-closable gaps. Scoring against a capability no project can
+  // demonstrate would make the tool recommend projects that cannot deliver.
+  const scorable = gap.closableSolo ?? gap.missing;
+  const weight = new Map(scorable.map((c) => [c.name, c.pct]));
 
   const scored = catalog
     .filter((p) => (requireReachable ? p.reachable !== false : true))
@@ -47,5 +50,6 @@ export function matchProjects(gap, catalog, opts = {}) {
 /** What the whole catalog cannot close, which is a gap in the catalog itself. */
 export function catalogBlindSpots(gap, catalog) {
   const covered = new Set(catalog.flatMap((p) => p.capabilities ?? []));
-  return gap.missing.filter((c) => !covered.has(c.name));
+  const scorable = gap.closableSolo ?? gap.missing;
+  return scorable.filter((c) => !covered.has(c.name));
 }

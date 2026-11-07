@@ -146,3 +146,39 @@ test("the full profile and the digest describe the same top demand", async () =>
   assert.ok(d.demands[0].startsWith(prof.capabilities[0].name),
             "the digest must not reorder what the screen shows");
 });
+
+test("every solo-demonstrable capability has at least one project", () => {
+  const solo = capabilities.filter((c) => c.demonstrable === "solo").map((c) => c.name);
+  const covered = new Set(CATALOG.projects.flatMap((p) => p.capabilities));
+  const orphans = solo.filter((n) => !covered.has(n));
+  assert.deepEqual(orphans, [],
+    "a solo capability with no project is a hole in the catalog, and the tool would " +
+    "report a gap it cannot act on");
+});
+
+test("every capability is classified for demonstrability", () => {
+  const bad = capabilities.filter(
+    (c) => !["solo", "outreach", "employment"].includes(c.demonstrable));
+  assert.deepEqual(bad.map((c) => c.name), []);
+});
+
+test("the matcher never scores a gap no project can evidence", () => {
+  const prof = buildProfile(FIX);
+  const gap = computeGap(prof, []);
+  const hits = matchProjects(gap, CATALOG.projects, { limit: 99 });
+  const soloNames = new Set(capabilities.filter((c) => c.demonstrable === "solo").map((c) => c.name));
+  for (const h of hits) {
+    for (const c of h.closes) {
+      assert.ok(soloNames.has(c),
+        `${h.id} claims to close "${c}", which is not solo-demonstrable`);
+    }
+  }
+});
+
+test("gaps split three ways and the parts sum to the whole", () => {
+  const prof = buildProfile(FIX);
+  const gap = computeGap(prof, []);
+  assert.equal(
+    gap.closableSolo.length + gap.closableByOutreach.length + gap.needsEmployment.length,
+    gap.missing.length);
+});

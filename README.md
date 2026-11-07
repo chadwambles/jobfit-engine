@@ -45,7 +45,10 @@ import { buildProfile, digest, computeGap, matchProjects, catalogBlindSpots }
 const profile = buildProfile(pastedText);   // what this market demands
 const gap     = computeGap(profile, mine);  // minus what you can evidence
 const picks   = matchProjects(gap, catalog);// projects that close the most
-const missing = catalogBlindSpots(gap, catalog); // what no project covers
+const missing = catalogBlindSpots(gap, catalog); // holes in the catalog
+gap.closableSolo;        // gaps a project can close
+gap.closableByOutreach;  // gaps needing other people, but not a job
+gap.needsEmployment;     // gaps no project can evidence, stated honestly
 digest(profile);                            // the compact form for a model
 ```
 
@@ -59,6 +62,19 @@ not something a weekend project proves, so tools are tagged separately and
 scored separately.
 
 **Domains** are context. Healthcare, insurance, government, and so on.
+
+Each capability is also marked **solo**, **outreach** or **employment**, and
+the gap splits on it:
+
+- *solo* (36 of 45): one person with public data. A project can evidence it.
+- *outreach* (6): needs other people but not a job. Open source maintainers,
+  a volunteer organization, user interviews.
+- *employment* (3): needs a real organization. No portfolio project can
+  honestly evidence it, and the tool says so rather than inventing one.
+
+The matcher only scores solo gaps. This is the difference between a tool that
+tells you the truth and one that recommends a weekend project for "drive
+change management and user adoption".
 
 The three live in `data/*.json` and are the single source of truth, read by
 both this engine and the Python analysis that produced them, so the published

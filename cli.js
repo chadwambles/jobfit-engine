@@ -66,8 +66,22 @@ if (cmd === "vocab") {
   const gap = computeGap(profile, have);
   console.log("\nyou evidence %d of %d demanded capabilities, %s%% of weighted demand",
               gap.covered.length, gap.demanded, gap.coverage);
-  console.log("\n-- BIGGEST GAPS --");
-  for (const g of gap.priorities) console.log(row(g.name, g.postings, g.pct));
+  console.log("of the %d gaps: %d a project can close, %d need outreach, %d need a job",
+              gap.missing.length, gap.closableSolo.length,
+              gap.closableByOutreach.length, gap.needsEmployment.length);
+  console.log("\n-- GAPS A PROJECT CAN CLOSE --");
+  for (const g of gap.closableSolo.slice(0, 12)) console.log(row(g.name, g.postings, g.pct));
+
+  if (gap.closableByOutreach.length) {
+    console.log("\n-- NEEDS OTHER PEOPLE, BUT NOT A JOB --");
+    console.log("   (open source maintainers, a volunteer organization, user interviews)");
+    for (const g of gap.closableByOutreach) console.log(row(g.name, g.postings, g.pct));
+  }
+  if (gap.needsEmployment.length) {
+    console.log("\n-- NO PORTFOLIO PROJECT CAN EVIDENCE THESE --");
+    console.log("   (they need a real organization. Nothing here will fix them.)");
+    for (const g of gap.needsEmployment) console.log(row(g.name, g.postings, g.pct));
+  }
 
   if (cmd === "match") {
     const cat = JSON.parse(readFileSync(flag("catalog") ?? join(HERE, "data", "catalog.seed.json"), "utf8"));

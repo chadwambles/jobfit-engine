@@ -36,6 +36,14 @@ Three separate dimensions, deliberately. Capabilities are what a portfolio
 project can demonstrate. Tools are exposure. Domains are context. Only the
 capability dimension drives the gap.
 
+Every capability also carries `demonstrable`: solo, outreach or employment.
+This exists because the engine's own blind-spot output showed it recommending
+nothing for capabilities like "run sprint ceremonies", which no solo project
+can evidence at all. The gap splits three ways and **the matcher only ever
+scores solo gaps**. Recommending a project for an employment-gated capability
+would be a lie, so the tool names those and says plainly that nothing here
+will fix them. If you add a capability, classify it, or a test fails.
+
 ## Testing discipline
 
 Two kinds, and both are load-bearing.
@@ -74,6 +82,9 @@ Read these before trusting a pattern you just wrote.
 
 ## Phase position
 
-A and B (collection, vocabulary, published study) are upstream. This is C.
-D is the hand-written catalog, and `catalogBlindSpots()` tells you what it
-still needs. E is the web app.
+A and B (collection, vocabulary, published study) are upstream. C is the
+engine. D is the catalog, now at 17 projects covering all 36 solo
+capabilities, with a test enforcing that. E is the web app.
+
+`catalogBlindSpots()` reports solo gaps no project covers, which is the
+specification for every catalog addition. It currently returns nothing.

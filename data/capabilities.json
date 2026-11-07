@@ -8,7 +8,8 @@
    "name": "Elicit requirements from stakeholders",
    "pattern": "elicit|requirements? gathering|gather(?:ing)? (?:and \\w+ )?requirements|stakeholder interview|discovery session|workshop facilitat|facilitat\\w* (?:discovery |requirements? )?workshops?",
    "scope": "body",
-   "note": "merged: absorbed 'Run requirements workshops', which is an elicitation technique"
+   "note": "merged: absorbed 'Run requirements workshops', which is an elicitation technique",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_02",
@@ -16,7 +17,8 @@
    "name": "Write user stories",
    "pattern": "user stor(?:y|ies)",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_03",
@@ -24,7 +26,8 @@
    "name": "Write acceptance criteria",
    "pattern": "acceptance criteria",
    "scope": "body",
-   "note": "kept separate from user stories: 60 vs 66, and a project can produce one without the other"
+   "note": "kept separate from user stories: 60 vs 66, and a project can produce one without the other",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_04",
@@ -32,7 +35,8 @@
    "name": "Write functional specifications, BRD or FRD",
    "pattern": "functional (?:specification|requirement|design) |\\bFRD\\b|\\bBRD\\b|business requirements? document",
    "scope": "body",
-   "note": "kept despite low count: the low count IS the finding"
+   "note": "kept despite low count: the low count IS the finding",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_05",
@@ -40,7 +44,8 @@
    "name": "Translate business needs into technical requirements",
    "pattern": "translate (?:business|customer|user)|bridge between (?:business|the business)|liaison between",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_06",
@@ -48,7 +53,8 @@
    "name": "Maintain requirements traceability",
    "pattern": "traceab|requirements? management|\\bRTM\\b",
    "scope": "body",
-   "note": "kept: a differentiator, and you have already built one in Persona Validator"
+   "note": "kept: a differentiator, and you have already built one in Persona Validator",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_07",
@@ -56,7 +62,8 @@
    "name": "Document business rules",
    "pattern": "business rules",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_08",
@@ -64,7 +71,8 @@
    "name": "Model current state, future state and the gap",
    "pattern": "gap analys|gaps between|current.state and future.state|as.is and to.be|future.state|current.state|target operating model|operating model",
    "scope": "body",
-   "note": "merged: 'Perform gap analysis' and 'Model current and future state' are one activity"
+   "note": "merged: 'Perform gap analysis' and 'Model current and future state' are one activity",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_09",
@@ -72,7 +80,8 @@
    "name": "Build a business case",
    "pattern": "business case|feasibility stud|cost.benefit|\\bROI\\b analys",
    "scope": "body",
-   "note": "kept: highly demonstrable, your pricing project is one"
+   "note": "kept: highly demonstrable, your pricing project is one",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_10",
@@ -80,7 +89,8 @@
    "name": "Define data dictionaries and definitions",
    "pattern": "data dictionar|data definition|single source of truth",
    "scope": "body",
-   "note": "kept; 'metric definition' moved to the KPI row"
+   "note": "kept; 'metric definition' moved to the KPI row",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_11",
@@ -88,7 +98,8 @@
    "name": "Map processes and build flow diagrams",
    "pattern": "process (?:map|flow|model)|flow diagram|swim ?lane|workflow diagram|decision tree|\\bBPMN\\b|process documentation",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_12",
@@ -96,7 +107,8 @@
    "name": "Identify and deliver process improvements",
    "pattern": "process improvement|streamlin|optimi[sz]e (?:process|workflow)|continuous improvement|eliminate manual",
    "scope": "body",
-   "note": "pattern tightened: dropped 'efficienc', which hit 77 postings on company goals rather than asks"
+   "note": "pattern tightened: dropped 'efficienc', which hit 77 postings on company goals rather than asks",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_13",
@@ -104,7 +116,8 @@
    "name": "Specify workflow automation",
    "pattern": "automat\\w* (?:workflow|process)|workflow automation|\\bRPA\\b|no-code|low-code",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_14",
@@ -112,7 +125,8 @@
    "name": "Manage and refine a backlog",
    "pattern": "backlog (?:refine|groom|manage|prioriti)|product backlog|refinement",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_15",
@@ -120,7 +134,8 @@
    "name": "Prioritize a backlog or competing requests",
    "pattern": "prioriti[sz]\\w*(?:\\W+\\w+){0,5}\\W+(?:backlog|requirement|request|feature|work|initiative|enhancement|user stor|epic|item|defect|bug|roadmap|deliverable|ask|task|project)|(?:backlog|requirement|request|feature|work|initiative|enhancement|user stor|epic|item|defect|bug|roadmap|deliverable|ask|task|project)\\w*(?:\\W+\\w+){0,5}\\W+prioriti[sz]|prioriti[sz]\\w+ (?:based on|across)|\\bMoSCoW\\b",
    "scope": "bullets",
-   "note": "pattern rewritten twice. The bare verb gave 79 (inflated by soft-skill mentions). My first tightening gave 22 (it rejected 'prioritize product backlog items', which is exactly the ask). This version requires the verb near something being prioritized, scoped to requirement bullets, and gives 57. Honest range is 57 to 71 depending on whether generic 'prioritization skills' counts. Treat as approximate."
+   "note": "pattern rewritten twice. The bare verb gave 79 (inflated by soft-skill mentions). My first tightening gave 22 (it rejected 'prioritize product backlog items', which is exactly the ask). This version requires the verb near something being prioritized, scoped to requirement bullets, and gives 57. Honest range is 57 to 71 depending on whether generic 'prioritization skills' counts. Treat as approximate.",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_16",
@@ -128,7 +143,8 @@
    "name": "Run sprint ceremonies",
    "pattern": "sprint (?:planning|review|ceremon)|daily stand.?up|retrospectiv|scrum ceremon",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_17",
@@ -136,7 +152,8 @@
    "name": "Plan releases and roadmaps",
    "pattern": "release (?:plan|coordinat|sequenc)|roadmap",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_18",
@@ -144,7 +161,8 @@
    "name": "Act as product owner for a delivery team",
    "pattern": "product owner|voice of the customer",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_19",
@@ -152,7 +170,8 @@
    "name": "Plan and coordinate UAT",
    "pattern": "user acceptance test|\\bUAT\\b",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_20",
@@ -160,7 +179,8 @@
    "name": "Design test cases and scripts",
    "pattern": "test (?:case|script|plan|scenario)|testing documentation",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_21",
@@ -168,7 +188,8 @@
    "name": "Track and triage defects",
    "pattern": "defect|bug (?:track|triage)|issue triage",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_22",
@@ -176,7 +197,8 @@
    "name": "Validate data quality",
    "pattern": "data quality|data validat|validate (?:data|datasets)",
    "scope": "body",
-   "note": "pattern tightened: dropped 'reconcil', which is finance reconciliation, a different skill"
+   "note": "pattern tightened: dropped 'reconcil', which is finance reconciliation, a different skill",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_23",
@@ -184,7 +206,8 @@
    "name": "Query data with SQL",
    "pattern": "\\bSQL\\b",
    "scope": "body",
-   "note": "pattern tightened to the clean token; 70 of the original 72 came from it anyway"
+   "note": "pattern tightened to the clean token; 70 of the original 72 came from it anyway",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_24",
@@ -192,7 +215,8 @@
    "name": "Clean and prepare messy data",
    "pattern": "data clean|data prep|data wrangl|transform(?:ing)? data|\\bETL\\b",
    "scope": "body",
-   "note": "kept: low count, high portfolio value"
+   "note": "kept: low count, high portfolio value",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_25",
@@ -200,7 +224,8 @@
    "name": "Build dashboards",
    "pattern": "dashboard",
    "scope": "body",
-   "note": "split back out: an interactive dashboard and a static chart are different artifacts, and your own portfolio holds both (Power BI wait times vs the EPCOT rankings)"
+   "note": "split back out: an interactive dashboard and a static chart are different artifacts, and your own portfolio holds both (Power BI wait times vs the EPCOT rankings)",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_26",
@@ -208,7 +233,8 @@
    "name": "Design data visualizations",
    "pattern": "data visuali[sz]|visuali[sz]ation|charts? and graphs",
    "scope": "body",
-   "note": "split back out, same reason"
+   "note": "split back out, same reason",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_27",
@@ -216,7 +242,8 @@
    "name": "Build and maintain recurring reports",
    "pattern": "operational report|reporting (?:requirement|specification|cadence|layer)|build reports|recurring report",
    "scope": "body",
-   "note": "kept separate from dashboards: a recurring report is a different artifact"
+   "note": "kept separate from dashboards: a recurring report is a different artifact",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_28",
@@ -224,7 +251,8 @@
    "name": "Define KPIs and metrics",
    "pattern": "\\bKPI\\b|key performance indicator|scorecard|define metrics|metric definition",
    "scope": "body",
-   "note": "kept; absorbed 'metric definition'"
+   "note": "kept; absorbed 'metric definition'",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_29",
@@ -232,7 +260,8 @@
    "name": "Run ad hoc analysis to answer business questions",
    "pattern": "ad.hoc analys|ad.hoc (?:request|report|quer)|answer business question|deep.dive analys",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_30",
@@ -240,7 +269,8 @@
    "name": "Analyze cohorts and segments",
    "pattern": "cohort|segment(?:ation|ing)? (?:analys|by)|customer segment",
    "scope": "body",
-   "note": "kept: low count, clean concept, fires on product-analytics dumps"
+   "note": "kept: low count, clean concept, fires on product-analytics dumps",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_31",
@@ -248,7 +278,8 @@
    "name": "Build forecasts",
    "pattern": "forecast|predictive model|propensity",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_32",
@@ -256,7 +287,8 @@
    "name": "Measure experiments and A/B tests",
    "pattern": "\\bA/B\\b|experiment(?:ation|s)? (?:measure|design|result)|evaluate experiment|control group|comparison group",
    "scope": "body",
-   "note": "kept: the low count is itself a finding about this market"
+   "note": "kept: the low count is itself a finding about this market",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_33",
@@ -264,7 +296,8 @@
    "name": "Apply statistical analysis",
    "pattern": "statistical|regression|correlation|significan(?:ce|t) test|hypothes",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_34",
@@ -272,7 +305,8 @@
    "name": "Model data and design schemas",
    "pattern": "data model|schema|star schema|dimensional model|taxonom|hierarch\\w+ (?:and|of) attribute",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_35",
@@ -280,7 +314,8 @@
    "name": "Produce source-to-target mappings",
    "pattern": "source.to.target|field mapping|data mapping",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_36",
@@ -288,7 +323,8 @@
    "name": "Specify system integrations",
    "pattern": "integration (?:requirement|point|design)|\\bAPI\\b|interface requirement|\\bEDI\\b|middleware",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_37",
@@ -296,7 +332,8 @@
    "name": "Support a system implementation",
    "pattern": "implementation support|system implementation|platform implementation|go.live|deployment support|conversion",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "employment"
   },
   {
    "id": "cap_38",
@@ -304,7 +341,8 @@
    "name": "Manage stakeholders and their expectations",
    "pattern": "stakeholder (?:manage|engage|manag)|manage expectations|influence without authority|negotiat\\w+ with",
    "scope": "body",
-   "note": "pattern rebuilt: dropped 'cross.functional', which drove 82 of the old 95 and is boilerplate"
+   "note": "pattern rebuilt: dropped 'cross.functional', which drove 82 of the old 95 and is boilerplate",
+   "demonstrable": "outreach"
   },
   {
    "id": "cap_39",
@@ -312,7 +350,8 @@
    "name": "Present to executives and leadership",
    "pattern": "executive (?:communicat|present|summary|leadership)|present to (?:leadership|executives|senior)|\\bC.suite\\b|steering committee",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "employment"
   },
   {
    "id": "cap_40",
@@ -320,7 +359,8 @@
    "name": "Communicate to technical and non-technical audiences",
    "pattern": "technical and non.technical|non.technical (?:audience|stakeholder)|translate technical",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_41",
@@ -328,7 +368,8 @@
    "name": "Produce project documentation and decision logs",
    "pattern": "document(?:ation)? (?:standard|artifact|library)|maintain documentation|project artifact|decision log|runbook",
    "scope": "body",
-   "note": "renamed: the old 'Write documentation others rely on' was too vague to tag a project against"
+   "note": "renamed: the old 'Write documentation others rely on' was too vague to tag a project against",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_42",
@@ -336,7 +377,8 @@
    "name": "Produce training materials and train users",
    "pattern": "training material|train (?:users|staff|end.users)|user training|knowledge transfer",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_43",
@@ -344,7 +386,8 @@
    "name": "Drive change management and user adoption",
    "pattern": "change management|user adoption|organi[sz]ational change|adoption initiativ",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "employment"
   },
   {
    "id": "cap_44",
@@ -352,7 +395,8 @@
    "name": "Establish data governance and ownership",
    "pattern": "data governance|data steward|governance (?:rule|model|framework)",
    "scope": "body",
-   "note": "kept as is"
+   "note": "kept as is",
+   "demonstrable": "solo"
   },
   {
    "id": "cap_45",
@@ -360,7 +404,8 @@
    "name": "Use AI tools in the analysis workflow",
    "pattern": "\\bAI\\b tools?|generative ai|\\bGenAI\\b|\\bLLM\\b|ai.(?:assisted|enabled)|copilot",
    "scope": "bullets",
-   "note": "pattern tightened and scoped to bullets: excludes company branding and the disclosure that THEY screen applicants with AI"
+   "note": "pattern tightened and scoped to bullets: excludes company branding and the disclosure that THEY screen applicants with AI",
+   "demonstrable": "solo"
   }
  ],
  "removed": [
@@ -382,5 +427,10 @@
    "postings": 37,
    "reason": "CUT as a capability, MOVED to the tools dimension. No solo portfolio project configures an ERP, and the app exists to recommend projects a person can actually build."
   }
- ]
+ ],
+ "demonstrableLegend": {
+  "solo": "One person with public data and tools. A portfolio project can evidence this.",
+  "outreach": "Needs other people, but reachable without a job: open source maintainers, a volunteer organization, user interviews.",
+  "employment": "Needs a real organization with real stakes. No portfolio project can honestly evidence this, and the tool should say so rather than invent one."
+ }
 }

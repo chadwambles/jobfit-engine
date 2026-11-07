@@ -28,6 +28,7 @@ function rank(counts, vocab, total) {
       family: v.family ?? null,
       postings: counts.get(v.name),
       pct: Math.round((1000 * counts.get(v.name)) / total) / 10,
+      demonstrable: v.demonstrable ?? null,
     }))
     .sort((a, b) => b.postings - a.postings);
 }
