@@ -1,0 +1,187 @@
+{
+ "version": "1.0.0",
+ "derived_from": "54 technical capabilities, 2,639 postings, 2026-11-08",
+ "note": "Every project closes capabilities marked solo. Nothing here claims to close on-call, production incidents, compliance or any other capability that needs a real organisation.",
+ "projects": [
+  {
+   "id": "tech_warehouse",
+   "title": "Build a small warehouse from a public API and publish the model behind it",
+   "capabilities": ["Write and optimize SQL","Design database schemas","Model a data warehouse","Define data dictionaries and lineage","Build batch data pipelines"],
+   "tools": ["SQL","Python","dbt"],
+   "artifact": "A loaded warehouse, the dbt project that builds it, and a data dictionary explaining every column",
+   "effort": "2 to 3 weeks",
+   "dataSource": "Any public API with a real entity model, pulled on a schedule so the history is yours",
+   "reachable": true
+  },
+  {
+   "id": "tech_quality_gate",
+   "title": "Add data quality gates to a pipeline and show what they caught",
+   "capabilities": ["Implement data quality checks","Build batch data pipelines","Write and maintain documentation","Automate manual operational work"],
+   "tools": ["Python","SQL","Airflow"],
+   "artifact": "A pipeline with failing and passing checks, plus a written log of real defects the gates caught",
+   "effort": "1 to 2 weeks",
+   "dataSource": "A messy public dataset, ideally one that updates, so the checks fire on genuinely new problems",
+   "reachable": true
+  },
+  {
+   "id": "tech_streaming",
+   "title": "Build a streaming pipeline over a live public feed",
+   "capabilities": ["Build streaming data pipelines","Design event-driven and messaging systems","Build batch data pipelines","Build observability, monitoring and alerting"],
+   "tools": ["Python","Kafka","Docker"],
+   "artifact": "A running consumer, a replayable event log, and a dashboard of lag and throughput",
+   "effort": "2 to 3 weeks",
+   "dataSource": "A public websocket or polling feed that emits continuously, so backpressure is real rather than simulated",
+   "reachable": true
+  },
+  {
+   "id": "tech_dashboard",
+   "title": "Answer one contested question with a dashboard someone could act on",
+   "capabilities": ["Build dashboards and reporting","Write and optimize SQL","Apply statistics to analysis","Make data-informed product decisions"],
+   "tools": ["SQL","Tableau","Python"],
+   "artifact": "A dashboard, the query layer under it, and a written recommendation with its uncertainty stated",
+   "effort": "1 to 2 weeks",
+   "dataSource": "A public dataset where the answer is genuinely arguable, not one where the chart is obvious",
+   "reachable": true
+  },
+  {
+   "id": "tech_iac",
+   "title": "Deploy a real service to the cloud with nothing done by hand",
+   "capabilities": ["Operate cloud infrastructure","Manage infrastructure as code","Containerize and orchestrate services","Build and maintain CI/CD pipelines"],
+   "tools": ["Terraform","Docker","AWS","GitHub Actions"],
+   "artifact": "A repository that stands the whole environment up from empty, and tears it down again",
+   "effort": "2 to 3 weeks",
+   "dataSource": "Your own small service. A free tier is enough; the point is that no step is manual",
+   "reachable": true
+  },
+  {
+   "id": "tech_observability",
+   "title": "Make one service observably reliable and prove the number",
+   "capabilities": ["Build observability, monitoring and alerting","Improve reliability and availability","Build distributed systems at scale","Optimize performance and cost"],
+   "tools": ["Prometheus","Grafana","Docker"],
+   "artifact": "Dashboards, an alert that has actually fired, a stated SLO, and the load test that justifies it",
+   "effort": "2 weeks",
+   "dataSource": "A service you deployed, put under synthetic load you generate yourself",
+   "reachable": true
+  },
+  {
+   "id": "tech_devtool",
+   "title": "Build the small tool that removes a chore you actually have",
+   "capabilities": ["Build developer tooling and platforms","Automate manual operational work","Write production code in a general purpose language","Manage version control and branching"],
+   "tools": ["Python","Git"],
+   "artifact": "A published tool with a readme, tests, and a note on the time it saves per week",
+   "effort": "1 to 2 weeks",
+   "dataSource": "A repetitive task in your own workflow, timed before and after",
+   "reachable": true
+  },
+  {
+   "id": "tech_api",
+   "title": "Design an API someone else could build against, then build it",
+   "capabilities": ["Design and build APIs","Write technical design documents","Write production code in a general purpose language","Design system architecture","Define requirements and scope"],
+   "tools": ["Python","OpenAPI","Docker"],
+   "artifact": "A design document written before the code, the OpenAPI spec, and the running service",
+   "effort": "2 to 3 weeks",
+   "dataSource": "A domain you know well enough to argue about the edge cases",
+   "reachable": true
+  },
+  {
+   "id": "tech_perf",
+   "title": "Take something slow and make it fast, with the numbers either side",
+   "capabilities": ["Optimize performance and cost","Refactor and pay down technical debt","Write production code in a general purpose language","Write and optimize SQL"],
+   "tools": ["Python","SQL"],
+   "artifact": "A benchmark harness, a profile before and after, and a write-up of what the bottleneck really was",
+   "effort": "1 to 2 weeks",
+   "dataSource": "A slow query or script you can measure honestly, ideally in an open source project",
+   "reachable": true
+  },
+  {
+   "id": "tech_refactor",
+   "title": "Refactor one real module and write down why you left the rest alone",
+   "capabilities": ["Refactor and pay down technical debt","Write technical design documents","Manage version control and branching","Write automated tests"],
+   "tools": ["Git","Python"],
+   "artifact": "A branch with the refactor, the tests that make it safe, and a note on the debt you chose not to pay",
+   "effort": "1 to 2 weeks",
+   "dataSource": "A real open source repository, where the existing code is not yours to excuse",
+   "reachable": true
+  },
+  {
+   "id": "tech_tests",
+   "title": "Build a test suite for a project that has none",
+   "capabilities": ["Write automated tests","Build and maintain test frameworks","Triage and track defects","Build and maintain CI/CD pipelines"],
+   "tools": ["pytest","Playwright","GitHub Actions"],
+   "artifact": "A suite running in CI, a coverage number, and the bugs it found on the way in",
+   "effort": "2 weeks",
+   "dataSource": "An open source project with thin tests. The maintainers will tell you if the tests are wrong",
+   "reachable": true
+  },
+  {
+   "id": "tech_exploratory",
+   "title": "Break a real application on purpose and write the reports properly",
+   "capabilities": ["Perform manual and exploratory testing","Triage and track defects","Write and maintain documentation"],
+   "tools": ["Jira"],
+   "artifact": "A charter-based test session log and a set of reproducible defect reports with severity reasoning",
+   "effort": "1 week",
+   "dataSource": "Any public beta or open source application that accepts issues",
+   "reachable": true
+  },
+  {
+   "id": "tech_model",
+   "title": "Train a model on public data and report what it cannot do",
+   "capabilities": ["Train and evaluate machine learning models","Apply statistics to analysis","Run experiments and A/B tests","Write and maintain documentation"],
+   "tools": ["Python","scikit-learn"],
+   "artifact": "A notebook, a held-out evaluation, and an honest section on where the model fails",
+   "effort": "2 weeks",
+   "dataSource": "A public dataset with a real outcome variable and a defensible train and test split",
+   "reachable": true
+  },
+  {
+   "id": "tech_mlops",
+   "title": "Put a model behind an API and watch it drift",
+   "capabilities": ["Deploy and monitor models in production","Design and build APIs","Build observability, monitoring and alerting","Containerize and orchestrate services"],
+   "tools": ["Python","Docker","Prometheus"],
+   "artifact": "A served model, a drift dashboard, and the alert that fires when inputs move",
+   "effort": "2 to 3 weeks",
+   "dataSource": "Your own trained model, fed live or replayed data so drift is real",
+   "reachable": true
+  },
+  {
+   "id": "tech_rag",
+   "title": "Build retrieval over your own documents and measure whether it helps",
+   "capabilities": ["Work with LLMs and applied AI","Run experiments and A/B tests","Design and build APIs","Apply statistics to analysis"],
+   "tools": ["Python","OpenAI API"],
+   "artifact": "A working retrieval system plus an evaluation set you wrote, with results against a no-retrieval baseline",
+   "effort": "2 weeks",
+   "dataSource": "A document collection you know well enough to judge the answers",
+   "reachable": true
+  },
+  {
+   "id": "tech_threat",
+   "title": "Threat model a real open source application",
+   "capabilities": ["Threat model and secure design","Write technical design documents","Write and maintain documentation","Design system architecture"],
+   "tools": ["Draw.io"],
+   "artifact": "A data flow diagram, a STRIDE table, and a ranked list of what you would fix first",
+   "effort": "1 to 2 weeks",
+   "dataSource": "An open source application whose source you can actually read",
+   "reachable": true
+  },
+  {
+   "id": "tech_authn",
+   "title": "Build authentication properly and write down the attacks it stops",
+   "capabilities": ["Manage identity and access","Threat model and secure design","Write production code in a general purpose language","Design and build APIs"],
+   "tools": ["Python","OAuth"],
+   "artifact": "A working sign-in flow with sessions and roles, and a document mapping each control to the attack it blocks",
+   "effort": "2 weeks",
+   "dataSource": "Your own application. The value is in the written reasoning, not the login box",
+   "reachable": true
+  },
+  {
+   "id": "tech_scale",
+   "title": "Make one component survive ten times its traffic",
+   "capabilities": ["Build distributed systems at scale","Design event-driven and messaging systems","Improve reliability and availability","Design system architecture","Operate cloud infrastructure"],
+   "tools": ["Docker","Kafka","Terraform"],
+   "artifact": "A load test that breaks it, the change that fixes it, and the test re-run at ten times the load",
+   "effort": "2 to 3 weeks",
+   "dataSource": "A service you built, pushed until it fails, with the failure mode written down",
+   "reachable": true
+  }
+ ]
+}

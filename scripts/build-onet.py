@@ -68,9 +68,19 @@ for r in rows("software_skills.csv"):
         t["hot"] = True
 ranked = sorted(tools.values(), key=lambda t: -t["occ"])
 json.dump(ranked, open(f"{out}/tools.json", "w"), separators=(",", ":"))
+
+# which occupation uses which tool. The aggregate above answers "how common is
+# this tool"; a prefill needs "what does a nurse use", which is the other way.
+occ_tools = collections.defaultdict(list)
+for r in rows("software_skills.csv"):
+    occ_tools[r["O*NET-SOC Code"]].append(r["Workplace Example"])
+occ_tools = {k: sorted(set(v)) for k, v in occ_tools.items()}
+json.dump(occ_tools, open(f"{out}/occupation_tools.json", "w"), separators=(",", ":"))
+print("occupation_tools.json %3d occupations, %d links"
+      % (len(occ_tools), sum(len(v) for v in occ_tools.values())))
 print("tools.json        %5d distinct tools, %d flagged hot"
       % (len(ranked), sum(1 for t in ranked if t["hot"])))
 
-for f in ("occupations", "activities", "tasks", "tools"):
+for f in ("occupations", "activities", "tasks", "tools", "occupation_tools"):
     p = f"{out}/{f}.json"
     print("   %-18s %6.1f MB" % (f + ".json", os.path.getsize(p) / 1e6))

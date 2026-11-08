@@ -1,0 +1,383 @@
+{
+ "note": "Technical capability vocabulary, derived from a role-balanced sample of 758 technical postings and validated on a 1,881-posting holdout. Patterns were tightened wherever a flat cross-role frequency revealed boilerplate rather than duty.",
+ "candidates": [
+  {
+   "family": "Code",
+   "name": "Write production code in a general purpose language",
+   "pattern": "(?:writ|develop|build|ship)\\w*\\s+(?:high.quality\\s+|clean\\s+|production[- ]?(?:grade|ready|quality)\\s+)?(?:code|software|services|features|applications)",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Code",
+   "name": "Review teammates' code",
+   "pattern": "code review|review(?:ing)? (?:your )?(?:teammates|peers|others)['\u2019]? code|peer review|pull request review|\\bPR review",
+   "demonstrable": "outreach",
+   "scope": "body"
+  },
+  {
+   "family": "Code",
+   "name": "Refactor and pay down technical debt",
+   "pattern": "refactor|technical debt|tech debt|legacy code|modernis|moderniz",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Code",
+   "name": "Write technical design documents",
+   "pattern": "design doc|technical design|design review|\\bRFC\\b|architecture decision|write.{0,20}specifications? for",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Architecture",
+   "name": "Design system architecture",
+   "pattern": "system(?:s)? (?:design|architecture)|architect\\w* (?:the|our|scalable|distributed)|design (?:scalable|distributed|resilient)|architectural (?:design|decision)",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Architecture",
+   "name": "Design and build APIs",
+   "pattern": "\\bAPIs?\\b.{0,40}(?:design|build|develop|maintain)|(?:design|build|develop|maintain).{0,40}\\bAPIs?\\b|RESTful|\\bgRPC\\b|GraphQL|API (?:design|contract|endpoint)",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Architecture",
+   "name": "Build distributed systems at scale",
+   "pattern": "distributed system|at scale|high.throughput|low.latency|fault.toleran|horizontally scalab|millions of (?:requests|users|events)",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Architecture",
+   "name": "Design event-driven and messaging systems",
+   "pattern": "event.driven|message queue|\\bKafka\\b|pub/?sub|\\bSQS\\b|RabbitMQ|event stream",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Testing",
+   "name": "Write automated tests",
+   "pattern": "unit test|integration test|automated test|test automation|end.to.end test|\\be2e\\b|test coverage|writ\\w+ tests",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Testing",
+   "name": "Build and maintain test frameworks",
+   "pattern": "test (?:framework|harness|suite)|testing framework|\\bPlaywright\\b|\\bCypress\\b|\\bSelenium\\b|\\bpytest\\b|\\bJest\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Testing",
+   "name": "Perform manual and exploratory testing",
+   "pattern": "manual test|exploratory test|regression test|smoke test|\\bUAT\\b|user acceptance test",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Testing",
+   "name": "Triage and track defects",
+   "pattern": "defect|bug (?:triage|report|track)|triage.{0,20}(?:issues|bugs|failures)|root cause analysis",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Delivery",
+   "name": "Build and maintain CI/CD pipelines",
+   "pattern": "\\bCI/?CD\\b|continuous (?:integration|delivery|deployment)|build pipeline|deployment pipeline|\\bJenkins\\b|GitHub Actions|CircleCI|GitLab CI",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Delivery",
+   "name": "Containerize and orchestrate services",
+   "pattern": "\\bDocker\\b|container\\w*|\\bKubernetes\\b|\\bK8s\\b|\\bHelm\\b|\\bECS\\b|orchestrat\\w+ (?:container|workload)",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Delivery",
+   "name": "Manage infrastructure as code",
+   "pattern": "infrastructure as code|\\bIaC\\b|\\bTerraform\\b|CloudFormation|\\bPulumi\\b|\\bAnsible\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Delivery",
+   "name": "Operate cloud infrastructure",
+   "pattern": "\\bAWS\\b|Amazon Web Services|\\bGCP\\b|Google Cloud|\\bAzure\\b|cloud infrastructure|cloud platform",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Build observability, monitoring and alerting",
+   "pattern": "observability|monitor\\w* and alert|alerting|\\bDatadog\\b|Prometheus|\\bGrafana\\b|\\bSplunk\\b|instrument\\w+ (?:services|code|systems)|\\bSLO\\b|\\bSLI\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Take part in an on-call rotation",
+   "pattern": "on.call|pager|incident response rotation|\\bPagerDuty\\b",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Debug and resolve production incidents",
+   "pattern": "production (?:issue|incident|bug)|troubleshoot|debug\\w*|incident (?:management|response)|outage|mitigat\\w+ incident",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Write postmortems and drive follow-ups",
+   "pattern": "postmortem|post.mortem|blameless|retrospective.{0,20}incident|corrective action",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Improve reliability and availability",
+   "pattern": "(?:system|service|platform|pipeline|infrastructure|application|product)s?\\s+(?:reliabilit|availabilit|uptime|resilien)|improv\\w+\\s+(?:the\\s+)?(?:reliabilit|availabilit|resilien|uptime)|\\bSRE\\b|site reliability|disaster recovery|high.availability|\\bSLAs?\\b|fault.toleran|reduc\\w+\\s+downtime|ensur\\w+\\s+\\w*\\s*reliabilit",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Operations",
+   "name": "Optimize performance and cost",
+   "pattern": "performance (?:tuning|optimi|improve)|optimi\\w+ (?:performance|latency|cost|queries)|reduce (?:latency|cost)|profil\\w+ (?:code|application|performance)|cost optimi",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Write and optimize SQL",
+   "pattern": "\\bSQL\\b|query (?:the )?(?:data|database|warehouse)|complex queries|query optimi",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Design database schemas",
+   "pattern": "(?:database|data) (?:schema|model)|schema design|data model\\w*|normali[sz]ation|\\bERD\\b|relational database design",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Build batch data pipelines",
+   "pattern": "data pipeline|\\bETL\\b|\\bELT\\b|\\bAirflow\\b|\\bdbt\\b|batch (?:processing|job)|data ingestion",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Build streaming data pipelines",
+   "pattern": "stream\\w* (?:data|processing|pipeline)|real.time (?:data|pipeline|processing)|\\bFlink\\b|\\bKinesis\\b|\\bSpark Streaming\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Model a data warehouse",
+   "pattern": "data warehouse|\\bSnowflake\\b|\\bBigQuery\\b|\\bRedshift\\b|star schema|dimensional model|\\bdata mart\\b|\\bdata lake\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Implement data quality checks",
+   "pattern": "data quality|data validation|data integrity|data accuracy|anomaly detection.{0,20}data|data observability",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Define data dictionaries and lineage",
+   "pattern": "data dictionar|data lineage|data catalog|metadata management|data governance",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Data",
+   "name": "Build dashboards and reporting",
+   "pattern": "dashboard|\\bTableau\\b|\\bLooker\\b|Power ?BI|reporting (?:layer|tool|suite)|visuali[sz]ation",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "ML",
+   "name": "Train and evaluate machine learning models",
+   "pattern": "machine learning model|train\\w* (?:a )?model|model (?:training|evaluation|accuracy)|\\bML model|deep learning|neural network",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "ML",
+   "name": "Deploy and monitor models in production",
+   "pattern": "\\bMLOps\\b|model (?:deployment|serving|monitoring|drift)|deploy\\w* models|production (?:ML|machine learning)|feature store",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "ML",
+   "name": "Work with LLMs and applied AI",
+   "pattern": "\\bLLM\\b|large language model|generative ai|\\bRAG\\b|prompt engineering|fine.tun|embedding|foundation model",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "ML",
+   "name": "Run experiments and A/B tests",
+   "pattern": "\\bA/?B test|experiment\\w* (?:design|framework|platform)|statistical significance|hypothesis test|causal infer",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "ML",
+   "name": "Apply statistics to analysis",
+   "pattern": "statistic\\w*|regression (?:analysis|model)|forecast\\w*|time series|probabilit",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Security",
+   "name": "Threat model and secure design",
+   "pattern": "threat model|secure (?:design|by design|coding|development)|security (?:review|architecture|design)|\\bSDL\\b|attack surface",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Security",
+   "name": "Find and remediate vulnerabilities",
+   "pattern": "vulnerabilit|penetration test|\\bpentest|security (?:assessment|audit)|\\bCVE\\b|remediat\\w+ (?:finding|risk|vulnerabilit)|\\bSAST\\b|\\bDAST\\b",
+   "demonstrable": "outreach",
+   "scope": "body"
+  },
+  {
+   "family": "Security",
+   "name": "Respond to security incidents",
+   "pattern": "security incident|incident (?:detection|investigation)|\\bSIEM\\b|\\bSOC\\b analyst|threat (?:hunting|detection)|forensic",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Security",
+   "name": "Manage identity and access",
+   "pattern": "identity and access|\\bIAM\\b|authenticat|authori[sz]ation|single sign.on|\\bSSO\\b|\\bOAuth\\b|least privilege|\\bRBAC\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Security",
+   "name": "Work to a compliance framework",
+   "pattern": "\\bSOC ?2\\b|\\bISO ?27001\\b|\\bHIPAA\\b|\\bPCI\\b|\\bGDPR\\b|\\bFedRAMP\\b|compliance (?:requirement|framework|audit)",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Collaboration",
+   "name": "Partner with product managers",
+   "pattern": "product manager|\\bPMs?\\b|partner with product|work (?:closely )?with product|product partner",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Collaboration",
+   "name": "Work in agile ceremonies",
+   "pattern": "\\bagile\\b|\\bscrum\\b|sprint (?:planning|ceremon|review)|stand.?up|backlog (?:grooming|refinement)|\\bkanban\\b",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Collaboration",
+   "name": "Break work into tickets and estimate",
+   "pattern": "break (?:down|up) (?:work|epics|projects)|estimat\\w+ (?:work|effort|stories)|\\bJira\\b|ticket\\w*|scope (?:the )?work|story points",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Collaboration",
+   "name": "Communicate to technical and non-technical audiences",
+   "pattern": "non.technical|technical and non.technical|cross.functional (?:partner|stakeholder|team)|communicat\\w+ (?:complex|technical).{0,30}(?:audience|stakeholder)|present\\w* (?:to|findings)",
+   "demonstrable": "outreach",
+   "scope": "body"
+  },
+  {
+   "family": "Collaboration",
+   "name": "Write and maintain documentation",
+   "pattern": "documentation|document\\w+ (?:your|the) (?:work|code|system|process)|runbook|knowledge base|technical writing",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Leadership",
+   "name": "Mentor and grow other engineers",
+   "pattern": "mentor|coach\\w*|grow\\w* (?:other|junior|the team)|onboard\\w+ (?:new )?engineers|knowledge sharing|technical leadership",
+   "demonstrable": "outreach",
+   "scope": "body"
+  },
+  {
+   "family": "Leadership",
+   "name": "Lead projects end to end",
+   "pattern": "lead (?:the |a |complex |cross.functional )?(?:project|initiative|effort|team)|own\\w* (?:the )?(?:project|initiative|delivery) end.to.end|drive (?:projects|initiatives) (?:from|to)|technical lead",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Leadership",
+   "name": "Set technical direction and standards",
+   "pattern": "technical (?:direction|strategy|vision|standard)|best practice|coding standard|establish\\w* (?:standard|convention|guideline)|raise the bar",
+   "demonstrable": "employment",
+   "scope": "body"
+  },
+  {
+   "family": "Product",
+   "name": "Define requirements and scope",
+   "pattern": "gather\\w* requirement|defin\\w+ (?:the )?requirement|requirement\\w* (?:gathering|analysis)|translate.{0,30}requirement|scope and defin",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Product",
+   "name": "Make data-informed product decisions",
+   "pattern": "data.(?:driven|informed) decision|metrics? (?:that matter|driven)|measure (?:success|impact)|define (?:success )?metrics|\\bKPIs?\\b|\\bOKRs?\\b",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Platform",
+   "name": "Build developer tooling and platforms",
+   "pattern": "developer (?:tool|experience|productivity|platform)|internal (?:tool|platform)|\\bDevEx\\b|platform engineering|self.service",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Platform",
+   "name": "Manage version control and branching",
+   "pattern": "\\bgit\\b|version control|branch\\w* strateg|trunk.based|merge conflict",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Platform",
+   "name": "Automate manual operational work",
+   "pattern": "automat\\w+ (?:manual|repetitive|operational|away)|toil|script\\w* (?:to )?automat|reduce manual",
+   "demonstrable": "solo",
+   "scope": "body"
+  },
+  {
+   "family": "Platform",
+   "name": "Migrate systems and platforms",
+   "pattern": "migrat\\w+|re.?platform|cutover|lift and shift|upgrade\\w* (?:the )?(?:system|platform|version)",
+   "demonstrable": "employment",
+   "scope": "body"
+  }
+ ]
+}

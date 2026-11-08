@@ -26,6 +26,7 @@ export const occupations = load("occupations.json");
 export const activities = load("activities.json");
 const tasks = load("tasks.json");
 export const tools = load("tools.json");
+const occTools = load("occupation_tools.json");
 
 const STOP = new Set(("a an the and or of to in for with on at by from as is are be been being this " +
   "that these those it its their our your you we they will would can could should may might must " +
@@ -196,6 +197,99 @@ export function matchTools(text, { limit = 25 } = {}) {
     }
   }
   return [...seen.values()].sort((a, b) => b.occupations - a.occupations).slice(0, limit);
+}
+
+// ------------------------------------------------- lookup and prefill
+
+/** Occupation titles indexed by word, for autocomplete over 9,205 strings. */
+const titleIndex = new Map();
+for (const o of occupations) {
+  const names = [o.title, ...o.alts];
+  for (const n of names) {
+    for (const w of norm(n).split(" ")) {
+      if (w.length < 2) continue;
+      let a = titleIndex.get(w);
+      if (!a) titleIndex.set(w, (a = new Set()));
+      a.add(o.soc);
+    }
+  }
+}
+const bySoc = new Map(occupations.map((o) => [o.soc, o]));
+
+/**
+ * Find occupations by a typed job title.
+ *
+ * Ranks an exact match on a reported title above a partial one, because
+ * "Registered Nurse" should land on Registered Nurses rather than on every
+ * occupation with "nurse" somewhere in it.
+ */
+export function findOccupations(query, { limit = 8 } = {}) {
+  const q = norm(query);
+  if (q.length < 2) return [];
+  const words = q.split(" ").filter((w) => w.length > 1);
+  if (!words.length) return [];
+
+  const cand = new Map();
+  for (const w of words) {
+    for (const [key, socs] of titleIndex) {
+      if (key !== w && !key.startsWith(w)) continue;
+      const exact = key === w ? 1 : 0.6;
+      for (const soc of socs) cand.set(soc, (cand.get(soc) ?? 0) + exact);
+    }
+  }
+  const out = [];
+  for (const [soc, hits] of cand) {
+    const o = bySoc.get(soc);
+    if (!o) continue;
+    const all = [o.title, ...o.alts].map(norm);
+    let best = hits / words.length;
+    if (all.includes(q)) best += 2;                       // typed it exactly
+    else if (all.some((n) => n.startsWith(q))) best += 1; // typed the start of it
+    const matched = [o.title, ...o.alts].find(
+      (n) => norm(n) === q || norm(n).startsWith(q)) ?? o.title;
+    out.push({ soc, title: o.title, matched,
+               score: Math.round(best * 100) / 100 });
+  }
+  out.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
+  return out.slice(0, limit);
+}
+
+/**
+ * What an occupation does, as a prefillable list.
+ *
+ * This is the supply side of the gap when someone has not pasted postings:
+ * they name their job, and these are the things to untick.
+ */
+export function occupationProfile(soc, { activityLimit = 30, toolLimit = 20 } = {}) {
+  const o = bySoc.get(soc);
+  if (!o) return null;
+  const counts = new Map();
+  for (const t of tasks) {
+    if (t.soc !== soc) continue;
+    for (const d of t.dwas) {
+      const name = byId.get(d)?.name;
+      if (name) counts.set(name, (counts.get(name) ?? 0) + 1);
+    }
+  }
+  const acts = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, activityLimit)
+    .map(([name, n]) => ({ name, tasks: n }));
+
+  // Rarest first, not commonest. Microsoft Word is used by 784 occupations and
+  // says nothing about being a nurse; the nursing specific software is what a
+  // prefill should surface. Tools used by only one occupation are skipped as
+  // too incidental to be worth a checkbox.
+  const toolMeta = new Map(tools.map((t) => [t.name, t]));
+  const myTools = (occTools[soc] ?? [])
+    .map((n) => toolMeta.get(n))
+    .filter((t) => t && t.occ > 1)
+    .sort((a, b) => a.occ - b.occ || (b.hot ? 1 : 0) - (a.hot ? 1 : 0))
+    .slice(0, toolLimit)
+    .map((t) => ({ name: t.name, hot: t.hot, occupations: t.occ }));
+
+  return { soc, title: o.title, description: o.desc,
+           activities: acts, tools: myTools };
 }
 
 export const onetMeta = {

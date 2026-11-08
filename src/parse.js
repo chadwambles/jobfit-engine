@@ -28,9 +28,15 @@ export function detectFormat(text) {
 
 /** @returns {{header:string, body:string, url:string|null, raw:string}[]} */
 export function splitPostings(text) {
+  // Files written on Windows, and anything pasted out of a Windows editor,
+  // arrive with CRLF. Every boundary rule below looks for \n, so without this
+  // a posting's title block is silently lost: the markers still split, but the
+  // blank-line lookup that separates one posting's body from the next
+  // posting's header never matches.
+  text = text.replace(/\r\n?/g, "\n");
   const format = detectFormat(text);
   if (format === "linkedin-onenote") return splitOneNote(text);
-  if (format === "linkedin-loose") return splitOnMarker(text, /\bAbout the job\b/g);
+  if (format === "linkedin-loose") return splitOnMarker(text, /\bAbout the job\b/g, "About the job".length);
   return splitOnBlankRuns(text);
 }
 
@@ -51,21 +57,35 @@ function splitOneNote(text) {
   return out;
 }
 
-function splitOnMarker(text, marker) {
+function splitOnMarker(text, marker, markLen) {
   const idx = [...text.matchAll(marker)].map((m) => m.index);
   if (!idx.length) return splitOnBlankRuns(text);
+
+  // Each posting runs from its own marker to the next one. The previous
+  // version started every posting at the PREVIOUS marker, so posting two
+  // carried posting one's whole body and every capability in it was counted
+  // twice. The only genuinely ambiguous part is the title block sitting
+  // between one body and the next marker; it is cut at the last blank line
+  // and handed forward to the posting it introduces.
   const out = [];
+  let header = text.slice(0, idx[0]);
+
   for (let i = 0; i < idx.length; i++) {
-    const start = i === 0 ? 0 : idx[i - 1];
-    const end = i === idx.length - 1 ? text.length : idx[i + 1] ?? text.length;
-    const chunk = text.slice(start, end);
-    const k = chunk.indexOf("About the job");
-    out.push({
-      header: k >= 0 ? chunk.slice(0, k) : chunk,
-      body: k >= 0 ? chunk.slice(k + 13) : chunk,
-      url: null,
-      raw: chunk,
-    });
+    const start = idx[i] + markLen;
+    const end = i + 1 < idx.length ? idx[i + 1] : text.length;
+    let body = text.slice(start, end);
+    let nextHeader = "";
+
+    if (i + 1 < idx.length) {
+      const cut = body.lastIndexOf("\n\n");
+      if (cut >= 0) {
+        nextHeader = body.slice(cut + 2);
+        body = body.slice(0, cut);
+      }
+    }
+
+    out.push({ header: header.trim(), body, url: null, raw: header + body });
+    header = nextHeader;
   }
   return out;
 }

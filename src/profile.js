@@ -9,6 +9,7 @@
 import { capabilities, tools, domains, certifications, vocabVersion } from "./vocab.js";
 import { splitPostings, tagPosting, bullets } from "./parse.js";
 import { inferOccupation, matchActivities, matchTools, onetMeta } from "./onet.js";
+import { markets, marketById, chooseMarket } from "./markets.js";
 
 function tally(postings, vocab) {
   const counts = new Map();
@@ -44,17 +45,48 @@ function rank(counts, vocab, total) {
  *
  * Pass `{ onet: false }` to skip the O*NET pass, which is the slow half.
  */
-export function buildProfile(text, { onet = true, maxChunks = 2500 } = {}) {
+export function buildProfile(text, { onet = true, maxChunks = 2500, market = "auto" } = {}) {
   const postings = splitPostings(text);
   const total = postings.length || 1;
+
+  // Score every market, then let the postings decide which one they are in.
+  // Running only one vocabulary does not fail loudly, it quietly reports a
+  // market the postings are not in, which is the worst kind of wrong.
+  const scored = markets.map((mk) => {
+    const counts = tally(postings, mk.capabilities);
+    let matched = 0;
+    for (const n of counts.values()) matched += n;
+    return { mk, counts, matched };
+  });
+
+  const choice = chooseMarket(
+    scored.map((s) => ({ id: s.mk.id, matched: s.matched, postings: postings.length })));
+
+  const pickedId = market === "auto" ? choice.id : market;
+  const picked = scored.find((s) => s.mk.id === pickedId) ?? scored[0];
+  const mk = picked.mk;
+
   const profile = {
     vocabVersion,
+    market: {
+      id: mk.id,
+      name: mk.name,
+      derivedFrom: mk.derivedFrom,
+      /** Capabilities matched per posting. This is what chose the market. */
+      density: choice.density,
+      runnerUp: choice.runnerUp,
+      runnerUpDensity: choice.runnerUpDensity,
+      /** False when the two markets are close enough that the call is arbitrary. */
+      confident: market === "auto" ? choice.confident : true,
+      chosen: market === "auto" ? "by density" : "by caller",
+    },
     postings: postings.length,
-    capabilities: rank(tally(postings, capabilities), capabilities, total),
+    capabilities: rank(picked.counts, mk.capabilities, total),
     tools: rank(tally(postings, tools), tools, total),
     domains: rank(tally(postings, domains), domains, total),
     certifications: rank(tally(postings, certifications), certifications, total),
   };
+
   if (onet && postings.length) {
     const bodies = postings.map((p) => p.body);
     const chunks = postings.flatMap((p) => bullets(p.body)).slice(0, maxChunks);
@@ -67,6 +99,11 @@ export function buildProfile(text, { onet = true, maxChunks = 2500 } = {}) {
     };
   }
   return profile;
+}
+
+/** The catalog that belongs to whichever market a profile is in. */
+export function catalogFor(profile) {
+  return marketById(profile?.market?.id)?.catalog ?? marketById("ba").catalog;
 }
 
 /**
@@ -102,6 +139,13 @@ export function profileSize(profile) {
  */
 export function profileBucket(profile) {
   const top = (arr, n) => arr.slice(0, n).map((x) => x.name).sort().join("|");
-  return [top(profile.capabilities, 5), top(profile.tools, 5), top(profile.certifications, 99)]
-    .join(" :: ");
+  // The market leads the key. Two markets share almost no capability names so
+  // a collision is unlikely, but a cache that can serve business analyst prose
+  // to a backend engineer is not worth the three characters it saves.
+  return [
+    profile.market?.id ?? "ba",
+    top(profile.capabilities, 5),
+    top(profile.tools, 5),
+    top(profile.certifications, 99),
+  ].join(" :: ");
 }
