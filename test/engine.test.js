@@ -182,3 +182,67 @@ test("gaps split three ways and the parts sum to the whole", () => {
     gap.closableSolo.length + gap.closableByOutreach.length + gap.needsEmployment.length,
     gap.missing.length);
 });
+
+// ---------------------------------------------------------------- O*NET
+
+test("the O*NET artifacts load at the expected size", async () => {
+  const { onetMeta } = await import("../src/index.js");
+  assert.equal(onetMeta.occupations, 1016);
+  assert.equal(onetMeta.activities, 2087);
+  assert.equal(onetMeta.tasks, 18838);
+  assert.equal(onetMeta.tools, 8753);
+});
+
+test("occupation inference names the right job from its own language", async () => {
+  const { inferOccupation } = await import("../src/index.js");
+  const nurse = inferOccupation([
+    "Administer medications and monitor patients for adverse reactions.",
+    "Assess patient condition, record vital signs and update care plans.",
+  ], { limit: 3 });
+  assert.ok(nurse.some((o) => /Nurse/i.test(o.title)),
+    "nursing text should surface a nursing occupation, got " + nurse.map(o => o.title));
+
+  const sparky = inferOccupation([
+    "Install and repair electrical wiring, fixtures and control devices.",
+    "Inspect electrical systems for hazards and code compliance.",
+  ], { limit: 3 });
+  assert.ok(sparky.some((o) => /Electric/i.test(o.title)),
+    "electrical text should surface an electrical occupation, got " + sparky.map(o => o.title));
+});
+
+test("O*NET stays silent where it has no vocabulary", async () => {
+  const { matchActivities } = await import("../src/index.js");
+  // Checked directly against the release: zero mentions of user stories,
+  // acceptance criteria, sprint, scrum, agile or UAT. Reaching for a match
+  // here is how "write user stories" became "Clear equipment jams".
+  const agile = matchActivities([
+    "Write user stories with clear acceptance criteria.",
+    "Run sprint planning and backlog refinement with the scrum team.",
+    "Maintain requirements traceability through UAT.",
+  ]);
+  assert.equal(agile.length, 0,
+    "should return nothing, got " + agile.map((a) => a.name).join("; "));
+});
+
+test("tool matching finds whole phrases and not prose", async () => {
+  const { matchTools } = await import("../src/index.js");
+  const hits = matchTools(
+    "Build dashboards in Tableau and query the warehouse with SQL. " +
+    "Document the process in Microsoft Visio and track work in Atlassian JIRA.");
+  const names = hits.map((h) => h.name);
+  for (const want of ["Tableau", "Microsoft Visio", "Atlassian JIRA"]) {
+    assert.ok(names.includes(want), `expected ${want}, got ${names.join(", ")}`);
+  }
+  // "Word" is a tool name and also an ordinary word; prose must not trigger it
+  const prose = matchTools("Choose every word of the requirement with care.");
+  assert.ok(!prose.some((h) => h.name === "Microsoft Word"),
+    "the word 'word' in prose must not match Microsoft Word");
+});
+
+test("the O*NET pass can be skipped", async () => {
+  const prof = buildProfile(FIX, { onet: false });
+  assert.equal(prof.onet, undefined);
+  const withOnet = buildProfile(FIX);
+  assert.ok(withOnet.onet, "default should include the O*NET pass");
+  assert.equal(withOnet.onet.release, "O*NET 31.0 Database, August 2026");
+});

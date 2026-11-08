@@ -44,6 +44,34 @@ scores solo gaps**. Recommending a project for an employment-gated capability
 would be a lie, so the tool names those and says plainly that nothing here
 will fix them. If you add a capability, classify it, or a test fails.
 
+## Two vocabularies, not one
+
+`data/capabilities.json` is 45 hand built capabilities derived from 201
+business analyst postings. `data/onet/` is derived from the O*NET 31.0
+Database. They cover different ground and neither replaces the other.
+
+Checked directly against the O*NET release: across 18,838 task statements and
+2,087 work activities there are **zero** mentions of user stories, acceptance
+criteria, sprint, scrum, agile, UAT, traceability, product owner, kanban,
+wireframe or process map. Two for backlog, five for dashboard, fourteen for
+stakeholder. O*NET is survey built and updates slowly, so it is strong on
+healthcare, trades, education, food service and finance, and silent on modern
+software delivery.
+
+So: the pack carries software work, O*NET carries the other ~900 occupations,
+and `matchActivities` is tuned to return **nothing** rather than reach. If you
+loosen its thresholds, "write user stories" starts matching "Clear equipment
+jams" again, which is how it behaved on the first attempt.
+
+Matching goes posting text -> O*NET **task statement** -> work activity. Never
+straight to activities: they are three words long, so a bullet can only agree
+with them on generic verbs, and "develop plans" pairs a teacher with a
+financial planner. Tasks are full sentences carrying domain language, and each
+one carries an occupation code, which is where occupation inference comes from.
+
+Regenerate the artifacts with `python scripts/build-onet.py path/to/db_31_0_csv`.
+The raw release is over 100 MB and is deliberately not committed.
+
 ## Testing discipline
 
 Two kinds, and both are load-bearing.

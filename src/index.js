@@ -5,3 +5,6 @@ export { matchProjects, catalogBlindSpots } from "./match.js";
 export { splitPostings, tagPosting, bullets, detectFormat } from "./parse.js";
 export { capabilities, tools, domains, certifications, dimensions, vocabVersion,
          removedCapabilities } from "./vocab.js";
+export { seedCatalog, catalogVersion } from "./catalog.js";
+export { inferOccupation, matchActivities, matchTasks, matchTools,
+         occupations, activities, tools as onetTools, onetMeta } from "./onet.js";

@@ -7,7 +7,8 @@
  * 350 tokens of profile.
  */
 import { capabilities, tools, domains, certifications, vocabVersion } from "./vocab.js";
-import { splitPostings, tagPosting } from "./parse.js";
+import { splitPostings, tagPosting, bullets } from "./parse.js";
+import { inferOccupation, matchActivities, matchTools, onetMeta } from "./onet.js";
 
 function tally(postings, vocab) {
   const counts = new Map();
@@ -33,11 +34,20 @@ function rank(counts, vocab, total) {
     .sort((a, b) => b.postings - a.postings);
 }
 
-/** @returns a compact profile of what this set of postings demands. */
-export function buildProfile(text) {
+/**
+ * @returns a compact profile of what this set of postings demands.
+ *
+ * Two vocabularies, deliberately. The hand built capability pack is deep on
+ * software delivery, where O*NET is silent (zero mentions of user stories,
+ * sprint, scrum or UAT in its whole release). O*NET covers the other ~900
+ * occupations the pack knows nothing about. Neither one replaces the other.
+ *
+ * Pass `{ onet: false }` to skip the O*NET pass, which is the slow half.
+ */
+export function buildProfile(text, { onet = true, maxChunks = 2500 } = {}) {
   const postings = splitPostings(text);
   const total = postings.length || 1;
-  return {
+  const profile = {
     vocabVersion,
     postings: postings.length,
     capabilities: rank(tally(postings, capabilities), capabilities, total),
@@ -45,6 +55,18 @@ export function buildProfile(text) {
     domains: rank(tally(postings, domains), domains, total),
     certifications: rank(tally(postings, certifications), certifications, total),
   };
+  if (onet && postings.length) {
+    const bodies = postings.map((p) => p.body);
+    const chunks = postings.flatMap((p) => bullets(p.body)).slice(0, maxChunks);
+    profile.onet = {
+      release: onetMeta.release,
+      occupations: inferOccupation(bodies, { limit: 5 }),
+      activities: matchActivities(chunks.length ? chunks : bodies, { limit: 12 }),
+      tools: matchTools(bodies.join("\n"), { limit: 20 }),
+      chunksScanned: chunks.length,
+    };
+  }
+  return profile;
 }
 
 /**

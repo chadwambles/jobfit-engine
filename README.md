@@ -17,6 +17,34 @@ those 139 tokens, which is why a per-user request costs approximately nothing.
 The model's job comes later and elsewhere: writing the framing for projects
 this engine already picked, cached by profile shape.
 
+## Two vocabularies
+
+**45 hand built capabilities** derived from 201 business analyst postings, deep
+on software delivery.
+
+**O*NET 31.0**, the US Department of Labor occupational database: 1,016
+occupations, 2,087 work activities, 18,838 task statements and 8,753 tools,
+covering nursing, the trades, teaching, food service, finance and the rest.
+
+They are complementary rather than competing, and the reason is checkable. In
+the entire O*NET release there are zero mentions of user stories, acceptance
+criteria, sprint, scrum, agile or UAT. Fourteen mentions of "stakeholder". So
+O*NET cannot describe a modern delivery team, and the hand built pack cannot
+describe a welder.
+
+Matching runs posting text into O*NET task statements and then follows the link
+to work activities, rather than matching activities directly. Activities are
+three words long, so a bullet agrees with them only on generic verbs: matched
+directly, "write user stories" returns "Clear equipment jams". Tasks are full
+sentences carrying domain language, and each carries an occupation code, so
+inferring the occupation falls out of the same pass.
+
+The matcher is tuned for precision and will return nothing rather than reach.
+
+Cost: about 260 ms for 20 postings, 2.6 s for 201. Pass `{ onet: false }` to
+`buildProfile` to skip it. None of it reaches a model; the digest is still 139
+tokens.
+
 ## Install
 
 ```
